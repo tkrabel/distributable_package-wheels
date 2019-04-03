@@ -1,6 +1,0 @@
-[submodule "distributable_package"]
-	path = distributable_package
-	url = https://github.com/tkrabel/distributable_package.git
-[submodule "multibuild"]
-	path = multibuild
-	url = https://github.com/tkrabel/multibuild.git
