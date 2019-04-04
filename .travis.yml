@@ -10,10 +10,10 @@ env:
     - CYTHON_TEST_DEP="cython"
     - DAILY_COMMIT=master
     - DAILY_BUILD=false
-    - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
+    - WHEELHOUSE_UPLOADER_USERNAME=AKIAYWIC4XH4HDVW2IH3
     # Following generated with
-    # travis encrypt -r MacPython/scikit-learn-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
-    - secure: "Lyhm6qFtf/hY5D3UHMANNhh8Ar/PARF1nH/ebArWLtb24prrSYt+AAVJqZ81I58AdQK12Kn8mmuZVyVJT+FrRd8q6OyMijQ/wKrsx8EH+lDTTgUueBJtLql01KsaMRTDpAd04bREh1MppIsFFCHKVNxY2mW17XwsNQ+MUka4Bos="
+    # travis encrypt WHEELHOUSE_UPLOADER_SECRET=<the api key>
+    - secure: "seqnYFREB6HozHRlcItjt3j/f6hg4UzvyFAPxf1bryMJ7Ynn7CDdJxSo5hPihJemXkyXnqLoeXiNCrRoVNprKf0gn25G3m7RLdrUJvKnrr2QhNVhlxiHSgs7qzWPnkDJ4bumgSDl56XhaAqAs6dme0j7XGyHBVISQxLc9RNnLQ/JWdf9znIJ6rJtnYhUAouiImaoxGMFHN3VOuYPTwrTz3AieCGzttOD7DGzApBAdh0+2V3UmtsRtBpmhH40J/CgzWW/0k541BJpRn+/WiFD7ggWKU+a2Z4waqI6rHbwQ4SRjnSjSro3HBkVzHQ+H2yEHvQpONDD2aB2tAMMBqSF/EZ6bL1sGSwnYtnU9X7MFq2mI4gTv5hdiMxHkUYXZpfDb4tiCwLg5Y7lC5mC9JmfRP4o24JNdXFLz/tr87P1vm+kAvkzhm3tiqjcjzQfoe2XLIelGNsRrb74VlMqJRvmoO+SUS2wIBfvXpg+d1BM+mFDAgZWvo+q1nNOa+8qNWdV4v8/YM7cXN27FbZXvh8+yJxDtMBKiOPAyfwYzVOT21s1g300EDcuNV3LGIe8QYIv/CB3vcR1BMeuJC9G284YnjBlLNs1LZYNrQYrRtY32BPOvYl2JDq9VealSacBvmyjxOV5QMz6ZTTdUozQTL8N04zjKbih2vgxbXpDSVPfhX0="
 
 language: python
 # Default Python version is usually 2.7
@@ -86,7 +86,8 @@ script:
 after_success:
   # Upload wheels to Rackspace container
   - pip install wheelhouse-uploader
-  - python -m wheelhouse_uploader upload --local-folder
-        ${TRAVIS_BUILD_DIR}/wheelhouse/
-        $UPLOAD_ARGS
-        $CONTAINER
+  # - python -m wheelhouse_uploader upload --local-folder
+  #       ${TRAVIS_BUILD_DIR}/wheelhouse/
+  #       $UPLOAD_ARGS
+  #       $CONTAINER
+  - python -m wheelhouse_uploader upload --local-folder ${TRAVIS_BUILD_DIR}/wheelhouse/ /edaviz-wheels --provider S3_EU_CENTRAL
