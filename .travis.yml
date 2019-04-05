@@ -90,5 +90,5 @@ after_success:
   #       ${TRAVIS_BUILD_DIR}/wheelhouse/
   #       $UPLOAD_ARGS
   #       $CONTAINER
-  - python -m wheelhouse_uploader upload --local-folder ${TRAVIS_BUILD_DIR}/wheelhouse/ /edaviz-wheels --provider S3_EU_CENTRAL
+  - python -m wheelhouse_uploader upload --local-folder ${TRAVIS_BUILD_DIR}/wheelhouse/ /edaviz-wheels/dispypkg --provider S3_EU_CENTRAL
 
