@@ -9,9 +9,9 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script interpreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C ..\\appveyor\\run_with_env.cmd"
-    # WHEELHOUSE_UPLOADER_USERNAME: sklearn-appveyor
-    # WHEELHOUSE_UPLOADER_SECRET:
-    #   secure: P1/NpWGueg+26XlcS0P6kIKO1KbRw67S6ltwEjxb+vgf0F+zfNT6FRaMPKfHSXiR
+    WHEELHOUSE_UPLOADER_USERNAME: AKIAYWIC4XH4HDVW2IH3
+    WHEELHOUSE_UPLOADER_SECRET:
+      secure: dUNddm0v6ZH1QcWK5BZJG9U06qap4OV72DQsQkffjsGsnrxXEodqjP4+jcJ8LZ0i
 
     # Make sure we don't download large datasets when running the test on
     # continuous integration platform
@@ -130,17 +130,19 @@ test_script:
 
 artifacts:
   # Archive the generated wheel package in the ci.appveyor.com build report.
-  - path: dist\*
+  - path: C:\projects\distributable-package-wheels\distributable_package\dist\*
 
 on_success:
   # Upload the generated wheel package to Rackspace
   # On Windows, Apache Libcloud cannot find a standard CA cert bundle so we
   # disable the ssl checks.
-  - python -m wheelhouse_uploader upload
-    --no-ssl-check
-    --local-folder=dist
-    %UPLOAD_ARGS%
-    %CONTAINER%
+  # - python -m wheelhouse_uploader upload
+  #   --no-ssl-check
+  #   --local-folder=dist
+  #   %CONTAINER%
+  - python -m wheelhouse_uploader upload --local-folder=dist /edaviz-wheels --provider S3_EU_CENTRAL
+  # - python -m wheelhouse_uploader upload --local-folder ${TRAVIS_BUILD_DIR}/wheelhouse/ /edaviz-wheels --provider S3_EU_CENTRAL
+
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives such
