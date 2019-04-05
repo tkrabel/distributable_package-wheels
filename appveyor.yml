@@ -98,9 +98,9 @@ install:
   # Checkout the request scikit-learn version in the submodule
   - "git submodule update --init --recursive"
   - "cd distributable_package"
-  # - "git checkout %BUILD_COMMIT%"
-  # - "git clean -fxd"
-  # - "git reset --hard"
+  - "git checkout %BUILD_COMMIT%"
+  - "git clean -fxd"
+  - "git reset --hard"
 
   # Install the build and runtime dependencies of the project.
   - "%CMD_IN_ENV% pip install --timeout=60 numpy==%NP_BUILD_DEP%"
