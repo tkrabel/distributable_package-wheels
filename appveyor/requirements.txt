@@ -1,7 +1,5 @@
-numpy
-scipy
-cython
+scipy==1.1.0
+cython==0.28.5
 pytest
 wheel
 wheelhouse_uploader
-pillow
