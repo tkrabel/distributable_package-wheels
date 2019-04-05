@@ -23,21 +23,21 @@ environment:
     DAILY_BUILD: "false"
 
   matrix:
-    - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7.11"
-      PYTHON_ARCH: "32"
+    # - PYTHON: "C:\\Python27"
+    #   PYTHON_VERSION: "2.7.11"
+    #   PYTHON_ARCH: "32"
 
-    - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7.11"
-      PYTHON_ARCH: "64"
+    # - PYTHON: "C:\\Python27-x64"
+    #   PYTHON_VERSION: "2.7.11"
+    #   PYTHON_ARCH: "64"
 
-    - PYTHON: "C:\\Python34"
-      PYTHON_VERSION: "3.4.5"
-      PYTHON_ARCH: "32"
+    # - PYTHON: "C:\\Python34"
+    #   PYTHON_VERSION: "3.4.5"
+    #   PYTHON_ARCH: "32"
 
-    - PYTHON: "C:\\Python34-x64"
-      PYTHON_VERSION: "3.4.5"
-      PYTHON_ARCH: "64"
+    # - PYTHON: "C:\\Python34-x64"
+    #   PYTHON_VERSION: "3.4.5"
+    #   PYTHON_ARCH: "64"
 
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.2"
@@ -98,9 +98,9 @@ install:
   # Checkout the request scikit-learn version in the submodule
   - "git submodule update --init --recursive"
   - "cd distributable_package"
-  - "git checkout %BUILD_COMMIT%"
-  - "git clean -fxd"
-  - "git reset --hard"
+  # - "git checkout %BUILD_COMMIT%"
+  # - "git clean -fxd"
+  # - "git reset --hard"
 
   # Install the build and runtime dependencies of the project.
   - "%CMD_IN_ENV% pip install --timeout=60 numpy==%NP_BUILD_DEP%"
